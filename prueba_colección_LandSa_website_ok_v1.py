@@ -1,9 +1,9 @@
 # prueba colección LandSat
 
-import ee
 import sys
 import webbrowser
 import folium
+import ee
 
 from eeconvert import eeImageToFoliumLayer as ee_plot
 
@@ -64,7 +64,8 @@ ee_plot(primeraImage).add_to(feature_group)
 
 mymap.add_child(feature_group)
 
-mymap.add_child(folium.map.LayerControl())
-
-mymap.save('lagocoya_v1.html')
-webbrowser.open('lagocoya_v1.html')
+#mymap.add_child(folium.map.LayerControl())
+mymap.add_child(folium.raster_layers.ImageOverlay(primeraImage.transpose(1, 2, 0), opacity=.7, bounds = bounds_fin))
+mymap
+mymap.save('lagocoya_v5.html')
+webbrowser.open('lagocoya_v5.html')
